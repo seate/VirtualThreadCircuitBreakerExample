@@ -35,6 +35,8 @@ public class CircuitBreakerAspect {
         String name = (circuitBreakerAnnotation.name().isEmpty()) ? joinPoint.toString() : circuitBreakerAnnotation.name();
 
         return circuitBreakerMap.computeIfAbsent(name, (key) -> CircuitBreaker.builder()
+                .isTimeout(circuitBreakerAnnotation.isTimeout())
+                .timeout(circuitBreakerAnnotation.timeout())
                 .taskScheduler(taskScheduler)
                 .failureThreshold(circuitBreakerAnnotation.failureThreshold())
                 .resetTimeout(circuitBreakerAnnotation.resetTimeout())

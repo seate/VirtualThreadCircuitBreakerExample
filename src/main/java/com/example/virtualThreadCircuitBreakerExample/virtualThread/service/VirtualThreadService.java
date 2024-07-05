@@ -19,4 +19,12 @@ public class VirtualThreadService {
             System.out.println("Virtual Thread Service 1 success");
         }
     }
+
+    @CircuitBreakerAnnotation(isTimeout = true, timeout = 5000, failureThreshold = 3, resetTimeout = 30000)
+    public void virtualThreadService2(long sleepTime) throws InterruptedException {
+        System.out.println("Virtual Thread Service 2 executed");
+        Thread.sleep(sleepTime);
+
+        System.out.println("Virtual Thread Service 2 success");
+    }
 }

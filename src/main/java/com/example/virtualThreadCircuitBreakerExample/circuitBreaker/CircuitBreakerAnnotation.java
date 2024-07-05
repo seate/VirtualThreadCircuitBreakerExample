@@ -9,6 +9,10 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface CircuitBreakerAnnotation {
     String name() default "";
+
     int failureThreshold() default 5;
     long resetTimeout() default 600000;
+
+    boolean isTimeout() default false;
+    long timeout() default 10000;
 }

@@ -3,6 +3,7 @@ package com.example.virtualThreadCircuitBreakerExample.virtualThread.controller;
 import com.example.virtualThreadCircuitBreakerExample.virtualThread.service.VirtualThreadService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,6 +21,12 @@ public class VirtualThreadController {
     @GetMapping("/success")
     public String makeSuccess() {
         virtualThreadService.virtualThreadService1(false);
+        return "Hello World";
+    }
+
+    @GetMapping("/timeout/{sleepTime}")
+    public String makeTimeout(@PathVariable long sleepTime) throws InterruptedException {
+        virtualThreadService.virtualThreadService2(sleepTime);
         return "Hello World";
     }
 
