@@ -1,4 +1,20 @@
 spring:
     application:
-        name: virtualThreadCircuitBreakerExample
+        name: VirtualThreadCircuitBreakerExample
 
+    threads:
+        virtual:
+            enabled: true
+
+
+
+
+logging:
+    level:
+        org:
+            springframework:
+                scheduling: DEBUG
+
+        com:
+            example:
+                virtualThreadCircuitBreakerExample: DEBUG
